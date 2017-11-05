@@ -1,0 +1,27 @@
+/* Question: Given a positive integer, output its complement number. The complement strategy is to flip the bits of 
+its binary representation
+
+Link: https://leetcode.com/problems/number-complement/description/
+
+*/
+
+//Solution
+
+class Solution {
+    public int findComplement(int num) {
+        char binary_form[] = (Integer.toBinaryString(num)).toCharArray();
+       int i;
+       for(i=0;i<binary_form.length;i++) {
+           
+            if(binary_form[i] == '1')
+                binary_form[i] = '0';
+            else 
+                binary_form[i] = '1';
+        } 
+      
+       
+       num = Integer.parseInt(new String(binary_form), 2);
+       
+        return num;
+    }
+}
