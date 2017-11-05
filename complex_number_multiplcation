@@ -1,0 +1,27 @@
+/* Question: Given two strings representing two complex numbers.
+
+You need to return a string representing their multiplication. Note i2 = -1 according to the definition.
+
+Link: https://leetcode.com/problems/complex-number-multiplication/description/
+*/
+
+//Solution
+
+class Solution {
+    public String complexNumberMultiply(String a, String b) {
+        int a1, a2, b1, b2;
+        int aplus, bplus, res1, res2;
+        String result;
+        aplus = a.indexOf('+');
+        bplus = b.indexOf('+');
+        a1 = Integer.parseInt(a.substring(0, aplus));
+        b1 = Integer.parseInt(b.substring(0, bplus));
+        a2 = Integer.parseInt(a.substring(aplus+1, a.indexOf('i')));
+        b2 = Integer.parseInt(b.substring(bplus+1, b.indexOf('i')));
+        res1 = (a1*b1) + (a2*b2*(-1));
+        res2 = (a1*b2) + (a2*b1);
+        
+        result = Integer.toString(res1)+'+'+Integer.toString(res2)+'i';
+        return result;
+    }
+}
