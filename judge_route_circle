@@ -1,0 +1,27 @@
+/* Question: Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot 
+makes a circle, which means it moves back to the original place
+
+Link: https://leetcode.com/problems/judge-route-circle/description/
+*/
+
+//Solution
+
+class Solution {
+    public boolean judgeCircle(String moves) {
+        int length = moves.length(), ver = 0, hor = 0;
+       for(int i = 0; i<length; i++) {
+           if(moves.charAt(i) == 'U')
+               ver++;
+           else if(moves.charAt(i) == 'D')
+               ver--;
+           else if(moves.charAt(i) == 'L')
+               hor--;
+           else 
+               hor++;
+       }
+       if(ver == 0 && hor == 0)
+           return true;
+       else
+           return false;
+    }
+}
