@@ -1,0 +1,24 @@
+/* Question: Determine whether an integer is a palindrome. Do this without extra space.
+Link: https://leetcode.com/problems/palindrome-number/description/
+*/
+
+//Solution
+
+class Solution {
+    public boolean isPalindrome(int x) {
+       int y = 0, temp = x;
+        if(x<0)
+            return false;
+        
+        while(x!=0) {
+            
+            y = y*10 + (x%10);
+            x=x/10;
+        }
+        
+        if(temp == y)
+            return true;
+        else
+            return false;
+    }
+}
