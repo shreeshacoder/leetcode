@@ -1,0 +1,26 @@
+//Question: Given a 32-bit signed integer, reverse digits of an integer.
+
+Link: https://leetcode.com/problems/reverse-integer/description/
+
+*/
+
+//Solution
+
+class Solution {
+    public int reverse(int x) {
+         long j = x, y = 0;
+         
+       
+        long temp;
+        while(j!=0) {
+            temp = j%10;
+            y=y*10+temp;
+            j=j/10;
+        }
+        
+        if(y>Integer.MAX_VALUE || y<Integer.MIN_VALUE)
+            return 0;
+        return (int) y;
+    
+    }
+}
