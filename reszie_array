@@ -1,0 +1,29 @@
+/* Question: You're given a matrix represented by a two-dimensional array, and two positive integers r and c representing the row number 
+and column number of the wanted reshaped matrix, respectively.The reshaped matrix need to be filled with all the elements of the original 
+matrix in the same row-traversing order as they were. If the 'reshape' operation with given parameters is possible and legal, output 
+the new reshaped matrix; Otherwise, output the original matrix.
+
+Link: https://leetcode.com/problems/reshape-the-matrix/description/
+
+*/
+
+//Solution
+
+class Solution {
+    public int[][] matrixReshape(int[][] nums, int r, int c) {
+        int i, j, x = 0, y = 0;
+        int columns = nums[0].length, rows = nums.length;
+        int result[][] = new int[r][c];
+        if((rows*columns) != (r*c))
+            return nums;
+        for(i = 0; i<r; i++){
+            for(j = 0;j<c;j++, y++) {
+                y = y%columns;
+                result[i][j] = nums[x][y];
+                if(y == columns-1)
+                    x++;
+            }
+        }
+        return result;
+    }
+}
