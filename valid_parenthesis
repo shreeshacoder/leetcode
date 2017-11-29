@@ -1,0 +1,45 @@
+/* Link: https://leetcode.com/problems/valid-parentheses/description/
+
+Question: Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
+
+Note: This is a classical stack problem. */
+
+//Solution
+
+class Solution {
+    public boolean isValid(String s) {
+        char stack[] = new char[s.length()];
+        int i, index = -1;
+        
+        char test;
+        for(i = 0; i<s.length(); i++){
+            test = s.charAt(i);
+            if(test == '[' || test == '(' || test == '{')
+                stack[++index] = test;
+            
+            else{
+                if(index >= 0){
+                    if((test == ')' && stack[index] == '(') || (test == ']' && stack[index] == '[') || (test == '}' && stack[index] == '{'))
+                        index--;
+                    else {
+                        return false;
+                    }
+            
+                    
+                }
+                else{
+                    return false;
+                }
+                
+                
+            }
+        }
+        if(index == -1)
+            return true;
+        else 
+            return false;
+    }
+       
+}
