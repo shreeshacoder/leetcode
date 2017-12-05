@@ -6,12 +6,18 @@ Link: https://leetcode.com/problems/keyboard-row/description/
 //Solution
 
 class Solution {
-    public boolean detectCapitalUse(String word) {
-        if(word.length() == 1)
-            return true;
-        if(word.matches("[A-Z]+") || word.matches("[a-z]+") || word.matches("[A-Z][a-z]+"))
-            return true;
-        else
-            return false;
+    public String[] findWords(String[] words) {
+         int i, j = 0;
+        String temp;
+        for(i = 0; i<words.length; i++){
+            if(words[i].toLowerCase().matches("[qwertyuiop]*|[asdfghjkl]*|[zxcvbnm]*")){
+                temp = words[i];
+                words[i] = words[j];
+                words[j] = temp;
+                j++;
+            }
+        }
+        //System.out.println(Arrays.toString(words));
+        return Arrays.copyOf(words, j);
     }
 }
