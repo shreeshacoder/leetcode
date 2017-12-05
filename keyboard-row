@@ -1,0 +1,17 @@
+/*Question: Given a List of words, return the words that can be typed using letters of alphabet on only one 
+row's of American keyboard
+Link: https://leetcode.com/problems/keyboard-row/description/
+*/
+
+//Solution
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        if(word.length() == 1)
+            return true;
+        if(word.matches("[A-Z]+") || word.matches("[a-z]+") || word.matches("[A-Z][a-z]+"))
+            return true;
+        else
+            return false;
+    }
+}
