@@ -1,0 +1,45 @@
+/* Question:
+The count-and-say sequence is the sequence of integers with the first five terms as following:
+
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+
+Link: https://leetcode.com/problems/count-and-say/description/
+*/
+
+class Solution {
+    public String countAndSay(int n) {
+        String temp = new String("");
+        String str = Integer.toString(1);
+        int i = 0, count = 0;
+        char prev_digit, curr_digit;
+        while(n > 1){
+            count = 0;
+            i = 0;
+            prev_digit = str.charAt(0);
+            while(i < str.length()){
+                curr_digit = str.charAt(i);
+                if(curr_digit == prev_digit)
+                    count++;
+                else{
+                    temp = temp + count + prev_digit;
+                    prev_digit = curr_digit;
+                    count = 1;
+                }
+                i++;
+            }
+            temp = temp + count + prev_digit;
+            str = temp;
+            temp="";
+            n--;
+            
+        }
+        return str;
+    }
+}
