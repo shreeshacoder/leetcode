@@ -1,0 +1,29 @@
+/* 
+Question: Given an input string, reverse the string word by word.
+
+For example,
+Given s = "the sky is blue",
+return "blue is sky the".
+
+Link: https://leetcode.com/problems/reverse-words-in-a-string/description/ */
+
+//Solution
+
+import java.util.regex.*;
+public class Solution {
+    public String reverseWords(String s) {
+        s = s.trim();
+        if(s.length() == 0)
+            return s;
+        String array[] = s.split("[ ]+");
+        int start = 0, end = array.length-1, i;
+        StringBuilder res = new StringBuilder();
+        for(i = end; i >= start; i--){
+            res.append(array[i]);
+            res.append(" ");
+        }
+        String output = res.toString();
+        output = output.trim();
+        return output;
+    }
+}
