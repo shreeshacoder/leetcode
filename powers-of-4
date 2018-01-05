@@ -1,0 +1,12 @@
+//Link: https://leetcode.com/problems/power-of-four/description/
+
+
+//Solution
+
+class Solution {
+    public boolean isPowerOfFour(int num) {
+        String res = Integer.toString(num,4);
+        return res.matches("1[0]*");
+        
+    }
+}
