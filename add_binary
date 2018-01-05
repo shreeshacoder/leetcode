@@ -1,0 +1,24 @@
+//Link: https://leetcode.com/problems/add-binary/description/
+
+//Solution
+
+class Solution {
+    public String addBinary(String a, String b) {
+        int carry = 0, len1 = a.length()-1, len2 = b.length()-1, sum = 0;
+        String res = "";
+        while(len1>=0 || len2>=0){
+            sum = carry;
+            if(len1>=0)
+                sum += Character.getNumericValue(a.charAt(len1--));
+            if(len2>=0)
+                sum += Character.getNumericValue(b.charAt(len2--));
+            carry = sum/2;
+            sum = sum%2;
+            res = Integer.toString(sum) + res;
+            
+        }
+        if(carry==1)
+            res = "1"+res;
+        return res;
+    }
+}
