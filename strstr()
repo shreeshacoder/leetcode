@@ -1,0 +1,28 @@
+//Link: https://leetcode.com/problems/implement-strstr/description/
+
+//Solution
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle.length() == 0)
+            return 0;
+        int len1 = haystack.length(), len2 = needle.length(), j = 0, i = 0, temp = 0;
+        for(i = 0; i<len1; i++){
+            j = 0;
+            if(haystack.charAt(i) == needle.charAt(j)){
+                temp = i;
+                while(temp < len1 && j < len2 && haystack.charAt(temp) == needle.charAt(j)){
+                    temp++;
+                    j++;
+                }
+                if(j == len2)
+                return (temp-len2);
+            }
+        }
+        return -1;
+        
+    }
+}
+
+
+//Good enough time complexity O(n*m), but can be optimized
