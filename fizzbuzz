@@ -1,0 +1,25 @@
+//FizzBuzz Question
+
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        int i = 1, flag = 0;
+        List<String> res = new ArrayList<String>();
+        String temp;
+        for(; i<=n; i++){
+            temp = "";
+            flag = 0;
+            if(i%3 == 0){
+                temp += "Fizz";
+                flag = 1;
+            }
+            if(i%5 == 0){
+                temp += "Buzz";
+                flag = 1;
+            }
+            if(flag!=1)
+                temp += Integer.toString(i);
+            res.add(temp);
+        }
+        return res;
+    }
+}
