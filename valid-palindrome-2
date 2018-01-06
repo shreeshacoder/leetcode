@@ -1,0 +1,26 @@
+//Link: https://leetcode.com/problems/valid-palindrome-ii/
+
+//Solution
+
+class Solution {
+    int delete = 0;
+    public boolean checkPalindrome(String s, int start, int end){
+        while(start<end && (s.charAt(start) == s.charAt(end))){
+            start++;
+            end--;
+        }
+        if(start>=end)
+            return true;            
+        else{
+            if(delete>0)
+                return false;
+            else{
+                delete++;
+                return checkPalindrome(s,start+1,end) || checkPalindrome(s, start, end-1);
+            }
+        }
+    }
+    public boolean validPalindrome(String s) {
+        return checkPalindrome(s, 0 , s.length()-1);
+    }
+}
