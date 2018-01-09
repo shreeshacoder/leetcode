@@ -1,0 +1,41 @@
+//Link: https://leetcode.com/problems/min-stack/description/
+
+//Solution
+
+class MinStack {
+
+    ArrayList<Integer> stack;
+    ArrayList<Integer> min_stack;
+    int top, min_top, min, max;
+    
+    public MinStack() {
+        stack = new ArrayList<Integer>();
+        min_stack = new ArrayList<Integer>();
+        top = -1; 
+        min_top = 0;
+        min_stack.add(min_top,Integer.MAX_VALUE);
+    }
+    
+    public void push(int x) {
+        stack.add(++top, x);
+        if(x <= min_stack.get(min_top)){
+            min_stack.add(++min_top, x);
+        }
+    }
+    
+    public void pop() {
+        int x = top();
+        stack.remove(top--);
+        if(x == min_stack.get(min_top))
+            min_stack.remove(min_top--);
+    }
+    
+    public int top() {
+        return stack.get(top);
+    }
+    
+    public int getMin() {
+        return min_stack.get(min_top);
+    }
+}
+        
