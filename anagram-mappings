@@ -1,0 +1,19 @@
+//Link: https://leetcode.com/problems/find-anagram-mappings/description/
+
+//Solution
+
+class Solution {
+    public int[] anagramMappings(int[] A, int[] B) {
+        HashMap<Integer, Integer> mapping = new HashMap<Integer, Integer> ();
+        int size = A.length;
+        int[] result = new int[size];
+        int i = 0;
+        for(; i<size; i++)
+            mapping.put(B[i], i);
+        for(i = 0; i<size; i++){
+            result[i] = mapping.get(A[i]);
+            
+        }
+        return result;
+    }
+}
