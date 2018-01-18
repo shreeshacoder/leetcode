@@ -1,0 +1,39 @@
+//Link: https://leetcode.com/problems/zigzag-conversion/description/
+
+//Note sure if this is the best code
+//Solution
+
+class Solution {
+    public String convert(String s, int nRow) {
+        if(nRow == 1)
+            return s;
+        String res ="";
+        StringBuilder zigzag[] = new StringBuilder[nRow];
+        boolean down = true;
+        int i = 0, index = 0;
+        for (i = 0; i < zigzag.length; i++) {
+            zigzag[i] = new StringBuilder("");
+        }
+        i = 0;
+        while(i<s.length()){
+            zigzag[index].append(s.charAt(i++));
+            if(index == 0){
+                index++;
+                down = true;
+            }
+            else if(index == nRow-1){
+                index--;
+                down = false;
+            }
+            else{
+                if(down)
+                    index++;
+                else
+                    index--;
+            }
+        }
+        for(i = 0; i<nRow; i++)
+            res += zigzag[i].toString();
+        return res;
+    }
+}
