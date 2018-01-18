@@ -11,9 +11,8 @@ class Solution {
         StringBuilder zigzag[] = new StringBuilder[nRow];
         boolean down = true;
         int i = 0, index = 0;
-        for (i = 0; i < zigzag.length; i++) {
+        for (i = 0; i < zigzag.length; i++) 
             zigzag[i] = new StringBuilder("");
-        }
         i = 0;
         while(i<s.length()){
             zigzag[index].append(s.charAt(i++));
@@ -32,8 +31,8 @@ class Solution {
                     index--;
             }
         }
-        for(i = 0; i<nRow; i++)
-            res += zigzag[i].toString();
-        return res;
+        for(i = 1; i<nRow; i++)
+            zigzag[0].append(zigzag[i]);
+        return zigzag[0].toString();
     }
 }
