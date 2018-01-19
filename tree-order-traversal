@@ -1,0 +1,40 @@
+//Link: https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+
+//Solution
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new LinkedList<List<Integer>>();
+        if(root == null)
+            return res;
+        int i, n;
+        TreeNode temp;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            i = 0;
+            n = queue.size();
+            LinkedList<Integer> level_values = new LinkedList<Integer>();
+            while(i<n){
+                temp = queue.poll();
+                level_values.add(temp.val);
+                if(temp.left!=null)
+                    queue.add(temp.left);
+                if(temp.right!=null)
+                    queue.add(temp.right);
+                i++;
+            }
+            res.add(level_values);
+        }
+        return res;
+    }
+}
