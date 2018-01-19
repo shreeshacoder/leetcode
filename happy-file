@@ -1,0 +1,23 @@
+//Link: https://leetcode.com/problems/happy-number/description/
+
+//Solution 
+
+class Solution {
+    public boolean isHappy(int n) {
+        int sum_digits = 0, digits;
+        HashSet<Integer> values = new HashSet<Integer> ();
+        while(n != 1){
+            if(values.contains(n))
+                return false;
+            values.add(n);
+            sum_digits = 0;
+            while(n>0){
+                digits = n%10;
+                n /= 10;
+                sum_digits += (digits*digits);
+            }
+            n =  sum_digits;
+        }
+        return true;
+    }
+}
