@@ -1,0 +1,42 @@
+//Link: https://leetcode.com/problems/average-of-levels-in-binary-tree/description/
+
+//Solution
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> result = new LinkedList<Double>();
+        if(root == null)
+            return result;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        TreeNode temp;
+        queue.add(root);
+        int i, size;
+        double sum;
+        while(!queue.isEmpty()){
+            i = 0;
+            size = queue.size();
+            sum = 0;
+            while(i<size){
+                temp = queue.poll();
+                sum += temp.val;
+                if(temp.left!=null)
+                    queue.add(temp.left);
+                if(temp.right!=null)
+                    queue.add(temp.right);
+                i++;
+            }
+            sum /= size;
+            result.add(sum);
+        }
+        return result;
+    }
+}
