@@ -1,0 +1,23 @@
+//Link: https://leetcode.com/problems/excel-sheet-column-title/description/
+
+//Solution
+
+class Solution {
+    public String convertToTitle(int n) {
+        StringBuilder res = new StringBuilder("");
+        int value;
+        
+        while(n>0){
+            value = n%26;
+            if(value == 0){
+                res.append("Z");
+                n--;
+            }
+            else
+                res.append((char) ('A'+value-1));
+            n /= 26;
+        
+        }
+        return res.reverse().toString();
+    }
+}
